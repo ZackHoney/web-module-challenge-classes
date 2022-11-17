@@ -92,11 +92,11 @@ class Car {
     if(distance <= driveableMiles){
       this.odometer = this.odometer + distance;
       this.tank = this.tank - distance / this.milesPerGallon;
-    }else if( 
-      this.odometer = this.odometer + driveableMiles){
+    }else{
+      this.odometer = this.odometer + driveableMiles
       this.tank = 0;
-    }else {return `I ran out of fuel at ${this.odometer} miles!`;
-   }
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
   }
 }
 
@@ -114,8 +114,20 @@ class Car {
 */
 
 class Lambdasian {
-  
+  constructor(attrs){
+    this.name = attrs.name;
+    this.age = attrs.age;
+    this.location = attrs.location;
+  }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}`
+  }
 }
+const student = new Lambdasian({
+  name: 'Zack',
+  age: 29,
+  location: 'Coos Bay, Oregon'
+})
 
 /*
   TASK 4
@@ -132,8 +144,20 @@ class Lambdasian {
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 
-class Instructor {
-
+class Instructor extends Lambdasian {
+    constructor(attrs){
+      super(attrs);
+      this.favLanguage = attrs.favLanguage;
+      this.catchPhrase = attrs.catchPhrase;
+      this.specialty = attrs.specialty;
+    }
+    demo(subject) {
+      return `Today we are learning about ${subject}`
+    }
+    grade(student, subject){
+      return `${student.name} recieves a perfect score on ${subject}`
+    }
+  
 }
 
 /*
